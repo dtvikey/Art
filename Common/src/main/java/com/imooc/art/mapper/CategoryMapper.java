@@ -16,21 +16,21 @@ import java.util.List;
 public interface CategoryMapper {
     /**
      * 查询全部油画分类
-     * @return  全部蛋糕分类
+     * @return  全部油画分类
      */
     @Select("select id,name,createName,createTime,updateTime,description from category")
     List<Category> getCategories();
 
     /**
      * 删除某个分类
-     * @param id
+     * @param id 要删除的分类ID
      */
     @Delete("delete from category where id=#{id}")
     void deleteById(Long id);
 
     /**
      * 添加分类
-     * @param category
+     * @param category 分类实体
      */
     @Insert("insert into category(name,createName,createTime,updateTime,description) values(#{name},#{createName},#{createTime},#{updateTime},#{description})")
     void addCategory(Category category);
