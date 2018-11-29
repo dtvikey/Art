@@ -7,7 +7,7 @@
 		<div class="login">
 			<div class="header">
 				<h1>
-					<a href="/login.do">Login</a>
+					<a href="/login.do">登录</a>
 				</h1>
 				<button></button>
 			</div>

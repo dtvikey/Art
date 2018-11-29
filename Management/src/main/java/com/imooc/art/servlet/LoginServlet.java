@@ -7,26 +7,28 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 /**
- * @Author: dtvikey
- * @Date: 27/11/18 下午 04:58
- * @Version 1.0
+ *
  * 登录
+ *
+ * @version 1.0
  */
 public class LoginServlet extends HttpServlet {
+
     @Override
     protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        if("/login.do".equals(req.getServletPath())){
+        if ("/login.do".equals(req.getServletPath())) {
             String username = req.getParameter("username");
             String password = req.getParameter("password");
-            //如果用户名和密码相同且不为空，则登录成功。
-            if(null!=username && !"".equals(username.trim()) && username.equals(password)){
-                req.getSession().setAttribute("username",username);
-                req.getRequestDispatcher("/art/list.do").forward(req,resp);
-            }else{
-                req.getRequestDispatcher("/art/login.do").forward(req,resp);
+            //如果用户名和密码相同且不为null，则登录成功
+            //这里做了简单处理，设定为用户名和密码相同就允许用户登录，不同则跳转到登录页面
+            if (null != username && !"".equals(username.trim()) && username.equals(password)) {
+                req.getSession().setAttribute("username", username);
+                req.getRequestDispatcher("/art/list.do").forward(req, resp);
+            } else {
+                req.getRequestDispatcher("/loginPrompt.do").forward(req, resp);
             }
-        }else{
-            req.getRequestDispatcher("/WEB-INF/views/biz/login.jsp").forward(req,resp);
+        } else if ("/loginPrompt.do".equals(req.getServletPath())) {
+            req.getRequestDispatcher("/WEB-INF/views/biz/login.jsp").forward(req, resp);
         }
     }
 }
