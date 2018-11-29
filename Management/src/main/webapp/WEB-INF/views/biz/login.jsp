@@ -1,13 +1,13 @@
 <html>
 	<head>
-		<title>登录</title>
+		<title>Login</title>
 		<link rel="stylesheet" href="../../../css/login.css">
 	</head>
 	<body>
 		<div class="login">
 			<div class="header">
 				<h1>
-					<a href="/login.do">登录</a>
+					<a href="/login.do">Login</a>
 				</h1>
 				<button></button>
 			</div>
@@ -21,7 +21,7 @@
 					<p></p>
 				</div>
 				<div class="btn-red">
-					<input type="submit" value="登录" id="login-btn">
+					<input type="submit" value="Login" id="login-btn">
 				</div>
 			</form>
 		</div>

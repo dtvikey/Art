@@ -19,11 +19,11 @@ public class LoginServlet extends HttpServlet {
             String username = req.getParameter("username");
             String password = req.getParameter("password");
             //如果用户名和密码相同且不为空，则登录成功。
-            if(null!=username&&username.equals(password)){
+            if(null!=username && !"".equals(username.trim()) && username.equals(password)){
                 req.getSession().setAttribute("username",username);
-                req.getRequestDispatcher("/cake/list.do").forward(req,resp);
+                req.getRequestDispatcher("/art/list.do").forward(req,resp);
             }else{
-                req.getRequestDispatcher("/cake/login.do").forward(req,resp);
+                req.getRequestDispatcher("/art/login.do").forward(req,resp);
             }
         }else{
             req.getRequestDispatcher("/WEB-INF/views/biz/login.jsp").forward(req,resp);
