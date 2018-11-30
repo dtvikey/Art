@@ -32,6 +32,49 @@
         <servlet-name>LoginServlet</servlet-name>
         <servlet-class>com.imooc.art.servlet.LoginServlet</servlet-class>
     </servlet>
+    
+    <servlet>
+        <servlet-name>CanvasServlet</servlet-name>
+        <servlet-class>com.imooc.art.servlet.CanvasServlet</servlet-class>
+    </servlet>
+
+    <servlet>
+        <servlet-name>CategoryServlet</servlet-name>
+        <servlet-class>com.imooc.art.servlet.CategoryServlet</servlet-class>
+    </servlet>
+
+
+    <servlet-mapping>
+        <servlet-name>CategoryServlet</servlet-name>
+        <url-pattern>/category/list.do</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>CategoryServlet</servlet-name>
+        <url-pattern>/category/addPrompt.do</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>CategoryServlet</servlet-name>
+        <url-pattern>/category/add.do</url-pattern>
+    </servlet-mapping>
+
+
+
+    <servlet-mapping>
+        <servlet-name>CanvasServlet</servlet-name>
+        <url-pattern>/art/list.do</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>CanvasServlet</servlet-name>
+        <url-pattern>/art/addPrompt.do</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>CanvasServlet</servlet-name>
+        <url-pattern>/art/add.do</url-pattern>
+    </servlet-mapping>
 
     <servlet-mapping>
         <servlet-name>LoginServlet</servlet-name>

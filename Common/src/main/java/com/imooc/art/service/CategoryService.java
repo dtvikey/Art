@@ -5,6 +5,7 @@ import com.imooc.art.entity.Category;
 import com.imooc.art.mapper.CategoryMapper;
 import org.apache.ibatis.session.SqlSession;
 
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -26,6 +27,30 @@ public class CategoryService {
             return mapper.getCategories();
         }finally {
             sqlSession.close();
+        }
+    }
+
+    /**
+     * 添加油画分类
+     * @param category 油画分类实体
+     */
+    public void addCategory(Category category){
+
+        Date now = new Date();
+        category.setCreateTime(now);
+        category.setUpdateTime(now);
+        SqlSession sqlSession = MyBatisUtils.openSession();
+
+        try{
+
+            CategoryMapper mapper = sqlSession.getMapper(CategoryMapper.class);
+            mapper.addCategory(category);
+            sqlSession.commit();
+
+        }finally {
+
+            sqlSession.close();
+
         }
     }
 }

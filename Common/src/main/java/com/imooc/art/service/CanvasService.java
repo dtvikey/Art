@@ -5,6 +5,7 @@ import com.imooc.art.entity.Canvas;
 import com.imooc.art.mapper.CanvasMapper;
 import org.apache.ibatis.session.SqlSession;
 
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -25,8 +26,41 @@ public class CanvasService {
     public List<Canvas> getCanvasByCategoryId(Long categoryId,Integer page,Integer size){
 
         SqlSession sqlSession = MyBatisUtils.openSession();
-        CanvasMapper mapper = sqlSession.getMapper(CanvasMapper.class);
-        return mapper.getCanvasByCategoryId(categoryId,(page-1)*size,size);
+        try {
+
+            CanvasMapper mapper = sqlSession.getMapper(CanvasMapper.class);
+            return mapper.getCanvasByCategoryId(categoryId, (page - 1) * size, size);
+
+        } finally {
+
+             sqlSession.close();
+
+        }
+
+    }
+
+    /**
+     * 新增油画
+     * @param canvas 油画信息
+     */
+    public void addCanvas(Canvas canvas){
+
+        Date now = new Date();
+        canvas.setCreateTime(now);
+        canvas.setUpdateTime(now);
+
+        SqlSession sqlSession = MyBatisUtils.openSession();
+        try {
+
+            CanvasMapper mapper = sqlSession.getMapper(CanvasMapper.class);
+            mapper.addCanvas(canvas);
+            sqlSession.commit();
+
+        } finally {
+
+            sqlSession.close();
+
+        }
 
     }
 

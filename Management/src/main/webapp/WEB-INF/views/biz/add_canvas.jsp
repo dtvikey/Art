@@ -1,3 +1,4 @@
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
     <head>
         <meta charset="UTF-8">
@@ -23,7 +24,7 @@
             <div class="page-header">
                 <h3><small>新建</small></h3>
             </div>
-            <form class="form-horizontal" action="#" method="post" enctype="multipart/form-data">
+            <form class="form-horizontal" action="/art/add.do" method="post" enctype="multipart/form-data">
                 <div class="form-group">
                     <label for="name" class="col-sm-2 control-label">名称 ：</label>
                     <div class="col-sm-8">

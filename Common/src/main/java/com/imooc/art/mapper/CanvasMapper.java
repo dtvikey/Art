@@ -16,7 +16,7 @@ public interface CanvasMapper {
      * 分页查询油画
      * @param skip  跳过的记录数, 也就是从哪条开始查询.
      * @param size  要查询的记录数
-     * @return  蛋糕
+     * @return  油画
      */
     @Select("select * from canvas order by createTime desc limit #{skip},#{size}")
     @Results({

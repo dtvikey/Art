@@ -1,3 +1,6 @@
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <html>
     <head>
         <meta charset="UTF-8">
@@ -9,16 +12,21 @@
     <body>
         <header>
             <div class="container">
-                    <nav>
-                            <a href="#" >分类一</a>
-                    </nav>
-                    <nav>
-                        <a href="#" >分类</a>
-                    </nav>
-                    <nav>
-                        <a href="#">登录</a>
-                        <a href="#" onclick="alert('功能暂未开放');">注册</a>
-                    </nav>
+                <% if (null != request.getSession().getAttribute("username")) {%>
+                <nav>
+                    <c:forEach var="item" items="${categories}">
+                        <a href="/art/list.do?categoryId=${item.id}" >${item.name}</a>
+                    </c:forEach>
+                </nav>
+                <nav>
+                    <a href="/category/list.do" >分类</a>
+                </nav>
+                <%} else { %>
+                <nav>
+                    <a href="/loginPrompt.do">登录</a>
+                    <a href="#" onclick="alert('功能暂未开放');">注册</a>
+                </nav>
+                <% } %>
             </div>
         </header>
         <section class="banner">
@@ -45,16 +53,18 @@
                     </tr>
                     </thead>
                     <tbody>
+                        <c:forEach items="${canvas}" var="canvas">
                             <tr>
-                                <td>无名女郎</td>
-                                <td>分类一</td>
-                                <td>￥<fmt:formatNumber type="currency" pattern="#,#00.00#" value="5800"/></td>
-                                <td><fmt:formatDate pattern="yyyy-MM-dd HH:mm:ss" value="20171207"/></td>
-                                <td><fmt:formatDate pattern="yyyy-MM-dd HH:mm:ss" value="20171207"/></td>
-                                <td>描述一</td>
+                                <td>${canvas.name}</td>
+                                <td>${canvas.categoryId}</td>
+                                <td>￥<fmt:formatNumber type="currency" pattern="#,#00.00#"  value="${canvas.price / 100}"/></td>
+                                <td><fmt:formatDate pattern="yyyy-MM-dd HH:mm:ss" value="${cake.createTime}"/></td>
+                                <td><fmt:formatDate pattern="yyyy-MM-dd HH:mm:ss" value="${cake.updateTime}"/></td>
+                                <td>"${canvas.description}"</td>
                                 <td><a href="#">编辑</a></td>
                                 <td><a href="#">删除</a>
                             </tr>
+                        </c:forEach>
                     </tbody>
                 </table>
             </div>
@@ -62,7 +72,7 @@
         <section class="page">
             <div class="container">
                 <div id="fatie">
-                    <a href="#"><button>新建</button></a>
+                    <a href="/art/addPrompt.do"><button>新建</button></a>
                 </div>
             </div>
         </section>

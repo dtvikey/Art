@@ -29,8 +29,8 @@ public interface CategoryMapper {
     void deleteById(Long id);
 
     /**
-     * 添加分类
-     * @param category 分类实体
+     * 添加油画分类
+     * @param category 油画分类实体
      */
     @Insert("insert into category(name,createName,createTime,updateTime,description) values(#{name},#{createName},#{createTime},#{updateTime},#{description})")
     void addCategory(Category category);
