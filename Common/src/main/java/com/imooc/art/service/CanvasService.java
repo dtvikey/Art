@@ -64,4 +64,34 @@ public class CanvasService {
 
     }
 
+    /**
+     * 统计给定分类ID下的蛋糕数量
+     * @param categoryId  分类ID
+     * @return 统计结果
+     */
+    public int countCanvasByCategoryId(Long categoryId){
+        SqlSession sqlSession = MyBatisUtils.openSession();
+        try{
+            CanvasMapper mapper = sqlSession.getMapper(CanvasMapper.class);
+            return mapper.countCanvasByCategoryId(categoryId);
+        }finally {
+            sqlSession.close();
+        }
+    }
+
+    /**
+     * 根据ID查询对应的图片
+     * @param id 蛋糕ID
+     * @return 只包含图片信息的蛋糕实体
+     */
+    public Canvas getCanvasImg(Long id){
+        SqlSession sqlSession = MyBatisUtils.openSession();
+        try{
+            CanvasMapper mapper = sqlSession.getMapper(CanvasMapper.class);
+            return mapper.getImg(id);
+        }finally {
+            sqlSession.close();
+        }
+    }
+
 }

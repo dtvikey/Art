@@ -60,7 +60,7 @@
                                 <td>￥<fmt:formatNumber type="currency" pattern="#,#00.00#"  value="${canvas.price / 100}"/></td>
                                 <td><fmt:formatDate pattern="yyyy-MM-dd HH:mm:ss" value="${cake.createTime}"/></td>
                                 <td><fmt:formatDate pattern="yyyy-MM-dd HH:mm:ss" value="${cake.updateTime}"/></td>
-                                <td>"${canvas.description}"</td>
+                                <td>${canvas.description}</td>
                                 <td><a href="#">编辑</a></td>
                                 <td><a href="#">删除</a>
                             </tr>

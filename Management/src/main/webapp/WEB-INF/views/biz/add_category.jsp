@@ -1,3 +1,6 @@
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <html>
     <head>
         <meta charset="UTF-8">
@@ -17,13 +20,13 @@
         </nav>
         <div class="container">
             <div class="jumbotron">
-                <h1>Hello, admin!</h1>
+                <h1>Hello,  ${username}!</h1>
                 <p>请小心的新增油画分类，要是建了一个错误的就不好了。。。</p>
             </div>
             <div class="page-header">
                 <h3><small>新建</small></h3>
             </div>
-            <form class="form-horizontal" action="#" method="post">
+            <form class="form-horizontal" action="/category/add.do" method="post">
                 <div class="form-group">
                     <label for="name" class="col-sm-2 control-label">名称 ：</label>
                     <div class="col-sm-8">
@@ -34,7 +37,9 @@
                     <label for="name" class="col-sm-2 control-label">描述 ：</label>
                     <div class="col-sm-8">
                         <input type="text" name="description" class="form-control" id="description">
-                        <input type="hidden" id="createname" name="createname" value="#">
+
+
+                        <input type="hidden" id="createname" name="createname" value='${username}' >
                     </div>
                 </div>
                 <div class="form-group">

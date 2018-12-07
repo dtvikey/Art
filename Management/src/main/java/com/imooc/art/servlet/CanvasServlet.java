@@ -94,10 +94,12 @@ public class CanvasServlet extends HttpServlet {
                             String fieldName = item.getFieldName();
                             if("categoryId".equals(fieldName)){
                                 canvas.setCategoryId(Long.valueOf(item.getString()));
+                            }else if("name".equals(fieldName)){
+                                canvas.setName(new String(item.getString().getBytes("iso8859-1"),"utf-8"));
                             }else if("price".equals(fieldName)){
                                 canvas.setPrice(Integer.valueOf(item.getString()));
                             }else if("description".equals(fieldName)){
-                                canvas.setDescription(item.getString());
+                                canvas.setDescription(new String(item.getString().getBytes("iso8859-1"),"utf-8"));
                             }
                         } else {  //信息是文件格式
                             canvas.setSmallImg(item.get());

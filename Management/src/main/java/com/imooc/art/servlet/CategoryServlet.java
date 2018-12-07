@@ -34,12 +34,16 @@ public class CategoryServlet extends HttpServlet {
             List<Category> categories = categoryService.getCategories();
             req.setAttribute("categories",categories);
             req.getRequestDispatcher("/WEB-INF/views/biz/category_list.jsp").forward(req,resp);
-        }else if("category/addPrompt.do".equals(req.getServletPath())){
+        }else if("/category/addPrompt.do".equals(req.getServletPath())){
             req.getRequestDispatcher("/WEB-INF/views/biz/add_category.jsp").forward(req,resp);
-        }else if("category/add.do".equals(req.getServletPath())){
+        }else if("/category/add.do".equals(req.getServletPath())){
             String name = req.getParameter("name");
+            String description = req.getParameter("description");
+            String createName = req.getParameter("createname");
             Category category = new Category();
             category.setName(name);
+            category.setDescription(description);
+            category.setCreateName(createName);
             categoryService.addCategory(category);
             req.getRequestDispatcher("/category/list.do").forward(req,resp);
         }

@@ -55,9 +55,9 @@ public interface CanvasMapper {
      * 保存油画信息
      * @param canvas 油画信息
      */
-    @Insert("insert into canvas(categoryId,name,creator,price,smallImg,ceateTime,updateTime,description,details) " +
-            "value (#{canvas.categoryId}),#{canvas.name},#{canvas.creator},#{canvas.price},#{canvas.smallImg}," +
-            "#{canvas.ceateTime},#{canvas.updateTime},#{canvas.description},#{canvas.details})")
+    @Insert("insert into canvas(categoryId,name,creator,price,smallImg,createTime,updateTime,description,details) " +
+            "value (#{canvas.categoryId},#{canvas.name},#{canvas.creator},#{canvas.price},#{canvas.smallImg}," +
+            "#{canvas.createTime},#{canvas.updateTime},#{canvas.description},#{canvas.details})")
     void addCanvas(@Param("canvas") Canvas canvas);
 
     /**
