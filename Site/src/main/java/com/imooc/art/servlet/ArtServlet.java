@@ -63,13 +63,16 @@ public class ArtServlet extends HttpServlet {
                 req.getRequestDispatcher("/WEB-INF/views/index.jsp").forward(req,resp);
 
             }
+
         }else if ("/art/getImg.do".equals(req.getServletPath())){
 
             String idStr = req.getParameter("id");
             Canvas canvas = canvasService.getCanvasImg(Long.valueOf(idStr));
+
             try{
+                //因为图片以流的形式输出,所以要制定ContentType类型
                 resp.setContentType("multipart/form-data");
-                if(null!=canvas&& null!=canvas.getSmallImg()){
+                if(null!=canvas && null!=canvas.getSmallImg()){
                     InputStream in = new ByteArrayInputStream(canvas.getSmallImg());
                     ServletOutputStream out = resp.getOutputStream();
                     byte[] b = new byte[1024];

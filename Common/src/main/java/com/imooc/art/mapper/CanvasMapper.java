@@ -65,7 +65,7 @@ public interface CanvasMapper {
      * @param id 油画ID
      * @return 只包含图片的油画实体
      */
-    @Select("select smallImg from canvas where id =#{id} for update")
+    @Select("select smallImg from canvas where id=#{id} for update")
     Canvas getImg(@Param("id")Long id);
 
 
